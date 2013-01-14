@@ -1,0 +1,6 @@
+set laststatus=2
+let g:Powerline_symbols = 'fancy'
+set t_Co=256
+execute pathogen#infect()
+execute pathogen#infect('stuff/{}')
+
