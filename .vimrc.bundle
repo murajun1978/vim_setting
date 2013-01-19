@@ -5,12 +5,55 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
-NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundleFetch '~/.vim/bundle/neobundle.vim'
 
-"vim-powerline
 NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-pathogen'
 NeoBundle 'tpope/vim-sensible.git'
+
+NeoBundleLazy 'Shougo/neocomplcache', {
+      \ 'autoload' : {
+      \   'insert' : 1,
+      \ }}
+NeoBundleLazy 'Shougo/neosnippet', {
+      \ 'autoload' : {
+      \   'insert' : 1,
+      \ }}
+NeoBundle 'Shougo/neocomplcache-rsense', {
+      \ 'depends': 'Shougo/neocomplcache',
+      \ 'autoload': { 'filetypes': 'ruby' }}
+NeoBundleLazy 'taichouchou2/rsense-0.3', {
+      \ 'build' : {
+      \    'mac': 'ruby etc/config.rb > ~/.rsense',
+      \    'unix': 'ruby etc/config.rb > ~/.rsense',
+      \ }}
+
+NeoBundle 'tpope/vim-rails'
+NeoBundleLazy 'ujihisa/unite-rake', {
+      \ 'depends' : 'Shougo/unite.vim' }
+NeoBundleLazy 'basyura/unite-rails', {
+      \ 'depends' : 'Shjkougo/unite.vim' }
+NeoBundleLazy 'taichouchou2/unite-rails_best_practices', {
+      \ 'depends' : 'Shougo/unite.vim',
+      \ 'build' : {
+      \    'mac': 'gem install rails_best_practices',
+      \    'unix': 'gem install rails_best_practices',
+      \   }
+      \ }
+NeoBundleLazy 'taichouchou2/unite-reek', {
+      \ 'build' : {
+      \    'mac': 'gem install reek',
+      \    'unix': 'gem install reek',
+      \ },
+      \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] },
+      \ 'depends' : 'Shougo/unite.vim' }
+NeoBundleLazy 'taichouchou2/alpaca_complete', {
+      \ 'depends' : 'tpope/vim-rails',
+      \ 'build' : {
+      \    'mac':  'gem install alpaca_complete',
+      \    'unix': 'gem install alpaca_complete',
+      \   }
+      \ }
 
 filetype plugin indent on
